@@ -1,0 +1,3 @@
+C0001,Popolar Sdn Bhd,TARUMT,03-123456
+C0002,Harris Bookstore,Aeon Johor Bahru,012-3456678
+C0003,Chun Wen's BStore,Kepong,012-3456789
