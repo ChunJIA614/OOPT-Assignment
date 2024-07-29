@@ -7,6 +7,7 @@ public class Employee {
     private String name;
     private String position;
     private String contactNo;
+    private String password;
 
     // List to store employees
     private static List<Employee> employeeList = new ArrayList<>();
@@ -44,7 +45,15 @@ public class Employee {
         this.contactNo = contactNo;
     }
 
-    // Methods for the employee management system
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    //------------------------------------Methods for the employee management system-------------------------//
 
     // Main menu method
     public static void employeeMenu() {
@@ -115,11 +124,15 @@ public class Employee {
         System.out.print("Enter Contact No: ");
         String contactNo = scanner.nextLine();
 
+        System.out.print("Enter password: ");
+        String password = scanner.nextLine();
+
         Employee newEmployee = new Employee();
         newEmployee.setEmployeeID(employeeID);
         newEmployee.setName(name);
         newEmployee.setPosition(position);
         newEmployee.setContactNo(contactNo);
+        newEmployee.setPassword(password);
 
         employeeList.add(newEmployee);
 
@@ -132,7 +145,7 @@ public class Employee {
     // Method to append a new employee to the file
     private static void appendEmployeeToFile(Employee employee, String fileName) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
-            writer.write(employee.getEmployeeID() + "," + employee.getName() + "," + employee.getPosition() + "," + employee.getContactNo());
+            writer.write(employee.getEmployeeID() + "," + employee.getName() + "," + employee.getPosition() + "," + employee.getContactNo() + "," + employee.getPassword());
             writer.newLine();
         } catch (IOException e) {
             e.printStackTrace();
@@ -167,7 +180,8 @@ public class Employee {
             System.out.println("[1] Update Name");
             System.out.println("[2] Update Position");
             System.out.println("[3] Update Contact No");
-            System.out.println("[4] Done");
+            System.out.println("[4] Update Password");
+            System.out.println("[5] Done");
 
             System.out.print("Enter your choice: ");
             int choice = scanner.nextInt();
@@ -190,6 +204,10 @@ public class Employee {
                     employee.setContactNo(newContactNo);
                     break;
                 case 4:
+                    System.out.print("Enter new Password: ");
+                    String newPassword = scanner.nextLine();
+                    employee.setPassword(newPassword);
+                case 5:
                     continueUpdating = false;
                     break;
                 default:
@@ -215,6 +233,7 @@ public class Employee {
         System.out.println("Name: " + employee.getName());
         System.out.println("Position: " + employee.getPosition());
         System.out.println("Contact No: " + employee.getContactNo());
+        System.out.println("Password: " + employee.getPassword());
         System.out.println("");
     }
 
@@ -245,7 +264,7 @@ public class Employee {
         // Write the updated employee list back to the file
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             for (Employee employee : updatedEmployeeList) {
-                writer.write(employee.getEmployeeID() + "," + employee.getName() + "," + employee.getPosition() + "," + employee.getContactNo());
+                writer.write(employee.getEmployeeID() + "," + employee.getName() + "," + employee.getPosition() + "," + employee.getContactNo() + "," + employee.getPassword());
                 writer.newLine();
             }
         } catch (IOException e) {
@@ -378,6 +397,7 @@ public class Employee {
                 employee.setName(employeeData[1]);
                 employee.setPosition(employeeData[2]);
                 employee.setContactNo(employeeData[3]);
+                employee.setPassword(employeeData[4]);
                 employeeList.add(employee);
             }
         } catch (IOException e) {
