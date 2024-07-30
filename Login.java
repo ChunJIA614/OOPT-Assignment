@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Login {
-//-------
+
     //-----------------------------variable declaration---------------------------------------------//
     private String employeeID;
     private String password;
