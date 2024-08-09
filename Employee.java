@@ -2,6 +2,8 @@
 import java.util.*;
 import java.io.*;
 
+//chunjia lanjiao 18mm
+
 public class Employee {
     // Variable declaration
     private String employeeID;

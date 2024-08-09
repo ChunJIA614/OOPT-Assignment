@@ -1,6 +1,8 @@
 import java.io.*;
 import java.util.*;
 
+//junkang lanjiao 18cm
+
 public class Customer {
     private String customerID;
     private String name;
